@@ -1,0 +1,6 @@
+INSERT INTO sample (id, data) VALUES (1, 'Test Init Data on Start')
+INSERT INTO client (client_id, name, age, adress, postalcode) VALUES (1, 'Roux', 46, '5 rue de la', 67100)
+INSERT INTO movie(film_id, name, genre ,real) VALUES(1, '300', 'War', 'Tarantino')
+INSERT INTO room (room_id, room, capacity, floor) VALUES (1, 1, 150, 'A')
+INSERT INTO card (card_id, number, expiration, cryptogram) VALUES (1, 13423434, '01/20', 232)
+INSERT INTO client (client_id, name, age, adress, postalcode, film_id, room_id) VALUES (2, 'Roue', 46, '5 rue de le', 67200, 1, 1)

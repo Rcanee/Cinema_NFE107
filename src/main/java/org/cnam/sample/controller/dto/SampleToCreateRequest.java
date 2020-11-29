@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SampleToCreateRequest {
 
+
     public String data;
 
     @JsonCreator

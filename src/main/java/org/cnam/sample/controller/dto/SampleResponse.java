@@ -5,6 +5,9 @@ public class SampleResponse {
     public long id;
 
     public String data;
+
+    public SampleResponse(Long id, String data) {
+    }
 /*
     public String name;
 

@@ -2,11 +2,9 @@ package org.cnam.sample.controller;
 
 import org.cnam.sample.controller.dto.AcheterTicketRequest;
 import org.cnam.sample.controller.dto.AcheterTicketResponse;
-import org.cnam.sample.controller.dto.SampleResponse;
-import org.cnam.sample.domain.VenteService;
-import org.cnam.sample.domain.entity.Sample;
 import org.cnam.sample.domain.entity.TicketAAcheter;
 import org.cnam.sample.domain.entity.TicketAcheter;
+import org.cnam.sample.domain.service.business.VenteServiceBsns;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,15 +15,15 @@ import org.springframework.web.bind.annotation.*;
 public class VenteController {
 
     @Autowired
-    VenteService venteService;
+    VenteServiceBsns venteServiceBsns;
 
-    @PostMapping("/acheterticket")
+    @PostMapping("/realiserVente")
     @ResponseBody
-    public ResponseEntity<AcheterTicketResponse> acheterTicket(@RequestBody AcheterTicketRequest acheterTicketRequest) {
+    public ResponseEntity<AcheterTicketResponse> realiserVente(@RequestBody AcheterTicketRequest acheterTicketRequest) {
 
         TicketAAcheter ticketAAcheter = new TicketAAcheter(acheterTicketRequest.idTicket, acheterTicketRequest.price, acheterTicketRequest.movie);
 
-        TicketAcheter ticketAcheter = venteService.acheterTicket(ticketAAcheter);
+        TicketAcheter ticketAcheter = venteServiceBsns.realiserVente(...);
 
         AcheterTicketResponse acheterTicketResponse = new AcheterTicketResponse(ticketAcheter.idTicket, ticketAcheter.numreservation);
 

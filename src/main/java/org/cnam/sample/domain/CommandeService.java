@@ -3,8 +3,7 @@ package org.cnam.sample.domain;
 import org.cnam.sample.domain.entity.*;
 import org.cnam.sample.repository.VenteRepository;
 import org.cnam.sample.repository.model.Film;
-import org.cnam.sample.repository.model.SampleModel;
-import org.cnam.sample.repository.model.Vente;
+import org.cnam.sample.repository.model.Commande;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -12,21 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class VenteService {
+public class CommandeService {
 
     @Autowired
     private VenteRepository venteRepository;
 
     public TicketAcheter createTicket(TicketAAcheter ticketCreer){
-        Vente creationVente = new Vente(ticketCreer.idTicket,ticketCreer.price, ticketCreer.film);
+        Commande creationVente = new Commande(ticketCreer.idTicket,ticketCreer.price, ticketCreer.film);
 
-        Vente venteCreer = venteRepository.save(creationVente);
+        Commande venteCreer = venteRepository.save(creationVente);
 
         return new TicketAcheter(creationVente.getId(), creationVente.getNumreservation(),creationVente.getFilm());
     }
 
-    public List<Vente> getAllTickets(){
-        List<Vente> venteList = new ArrayList<Vente>();
+    public List<Commande> getAllTickets(){
+        List<Commande> venteList = new ArrayList<Commande>();
         return venteList;
     }
 
@@ -38,13 +37,13 @@ public class VenteService {
 
     public TicketAcheter acheterTicket(TicketAAcheter ticketAAcheter){
 
-        Optional<Vente> venteOpt = venteRepository.findById(TicketAAcheter.idTicket);
+        Optional<Commande> venteOpt = venteRepository.findById(TicketAAcheter.idTicket);
 
         if(!venteOpt.isPresent()){
             return null;
         }
 
-        Vente vente = venteOpt.get();
+        Commande vente = venteOpt.get();
 
         vente.setPrix(vente.getPrix() + ticketAAcheter.price);
 
